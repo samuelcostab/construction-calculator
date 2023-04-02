@@ -9,7 +9,18 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-bootstrap": "^2.7.2",
+    "react-bootstrap-sidebar": "^0.0.1",
+    "react-native": "0.71.4",
+    "react-native-web": "~0.18.10",
+    "react-pro-sidebar": "^1.0.0",
+    "styled-components": "^5.3.9",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@expo/webpack-config": "^18.0.1",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.15"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-test-renderer": "^18.2.0"
   }
 }
