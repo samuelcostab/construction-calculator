@@ -13,14 +13,14 @@ import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 
 export const mainListItems = () => {
   const items = [{ name: "Home" }, { name: "Dashboard" }];
-  return items.map((item) => {
+  return items.map((item, index) => {
     return (
-        <React.Fragment>
+        <React.Fragment key={index}>
           <ListItemButton>
             <ListItemIcon>
               <LabelImportantIcon />
             </ListItemIcon>
-            <ListItemText key={item.name} primary={item.name} />
+            <ListItemText primary={item.name} />
           </ListItemButton>
         </React.Fragment>
     );

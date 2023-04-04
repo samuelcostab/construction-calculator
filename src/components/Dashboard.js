@@ -110,6 +110,7 @@ function DashboardContent() {
         <AppBar position="absolute" open={open}>
           <Toolbar sx={{ pr: "24px" }}>
             <IconButton
+              data-testid="sidebar-button"
               edge="start"
               color="inherit"
               aria-label="open drawer"
@@ -151,7 +152,7 @@ function DashboardContent() {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav">
+          <List key="menu-list" component="nav">
             {mainListItems()}
             <Divider sx={{ my: 1 }} />
             {secondaryListItems}
