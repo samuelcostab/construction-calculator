@@ -92,15 +92,23 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
-  const [measurements, setMeasurements] = useState([]);
+  const [measurementData, setMeasurementData] = useState([]);
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
-  const handleCalcLageSubmit = (e, calcLage) => {
+  const handleInputSubmit = (e, newMeasurementData) => {
     e.preventDefault();
-    const newMeasurement = calcLage ? calcLage : {}
-    setMeasurements([...measurements, newMeasurement]);
+    
+    measurementData.length > 0 ?
+    measurementData.forEach((stage) => {
+      if(stage.etapa === newMeasurementData.etapa){
+        stage.inputs.push(...newMeasurementData.inputs)
+        return
+      }
+      measurementData.push(newMeasurementData);
+    }) : measurementData.push(newMeasurementData);
+    setMeasurementData([...measurementData]);
   };
 
   return (
@@ -183,8 +191,8 @@ function DashboardContent() {
                     height: 580,
                   }}
                 >
-                  {measurements.length ? <SummaryList list={measurements} title={textResources.budgetLaje} /> : null}
-                  <Popup onHandleCalcLageSubmit={handleCalcLageSubmit}/>
+                  {measurementData.length ? <SummaryList list={measurementData} title={textResources.budgetLaje} /> : null}
+                  <Popup onHandleCalcLageSubmit={handleInputSubmit}/>
                 </Paper>
               </Grid>
             </Grid>

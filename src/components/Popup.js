@@ -42,7 +42,7 @@ function Popup({ onHandleCalcLageSubmit }) {
 
   const handleSubmitWeightAndHeight = (e) => {
     if (width > 0 && height > 0) {
-      onHandleCalcLageSubmit(e, { width, height });
+      onHandleCalcLageSubmit(e, { etapa: 'lage', inputs:[{width, height }]});
       handleClose();
     }    
   };
