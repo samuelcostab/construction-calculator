@@ -13,7 +13,7 @@ import { Box,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { calcularTrilhos, calcularLajotas } from "../functions/CalculateMetrics"
+import { calcularTrilhos, calcularLajotas, calcularSubTotalLaje } from "../functions/CalculateMetrics"
 
 function createData(etapa, inputs) {
   const detalhes = inputs.map(({width, height}) => {
@@ -22,12 +22,12 @@ function createData(etapa, inputs) {
       qtdTrilhos: calcularTrilhos(width, height).toFixed(2),
       tamTrilhos: width > height ? width : height,
       qtdLajotas: calcularLajotas(width, height).toFixed(2),
-      subTotal: 1000
+      subTotal: calcularSubTotalLaje(width, height).toFixed(2)
     }
   });
 
   return {
-    total: detalhes.reduce((total, {subTotal} ) => total + subTotal, 0),
+    total: detalhes.reduce((total, {subTotal} ) => total + Number(subTotal), 0).toFixed(2),
     etapa,
     inputs,
     detalhes

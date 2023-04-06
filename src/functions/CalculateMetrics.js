@@ -14,7 +14,14 @@ function calcularLajotas (comprimento, largura) {
   return areaVao * qtdLajotaMetroQuadrado;
 }
 
+function calcularSubTotalLaje (comprimento, largura) {
+  const precoMetroQuadrado = 38;
+  const areaVao = comprimento * largura;
+  return areaVao * precoMetroQuadrado;
+}
+
 export {
   calcularTrilhos,
-  calcularLajotas
+  calcularLajotas,
+  calcularSubTotalLaje
 }
