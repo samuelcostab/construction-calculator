@@ -20,7 +20,7 @@ function createData(etapa, inputs) {
     return {
       vao: `${width} x ${height}`,
       qtdTrilhos: calcularTrilhos(width, height).toFixed(2),
-      tamTrilhos: width > height ? width.toFixed(2) : height.toFixed(2),
+      tamTrilhos: width > height ? width : height,
       qtdLajotas: calcularLajotas(width, height).toFixed(2),
       subTotal: 1000
     }

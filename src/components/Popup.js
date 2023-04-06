@@ -24,11 +24,11 @@ function Popup({ onHandleCalcLageSubmit }) {
   const [option, setOption] = useState('');
 
   const handleWidthChange = (e) => {
-    setWidth(parseInt(e.target.value));
+    setWidth(e.target.value);
   };
 
   const handleHeightChange = (e) => {
-    setHeight(parseInt(e.target.value));
+    setHeight(e.target.value);
   };
 
   const handleClickOpen = () => {
