@@ -13,28 +13,24 @@ import { Box,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { calcularTrilhos, calcularLajotas } from "../functions/CalculateMetrics"
 
-function createData(etapa, total) {
-  //calcular total atravez dos subTotais
+function createData(etapa, inputs) {
+  const detalhes = inputs.map(({width, height}) => {
+    return {
+      vao: `${width} x ${height}`,
+      qtdTrilhos: calcularTrilhos(width, height).toFixed(2),
+      tamTrilhos: width > height ? width.toFixed(2) : height.toFixed(2),
+      qtdLajotas: calcularLajotas(width, height).toFixed(2),
+      subTotal: 1000
+    }
+  });
+
   return {
-    total,
+    total: detalhes.reduce((total, {subTotal} ) => total + subTotal, 0),
     etapa,
-    detalhes: [
-      {
-        vao: "2,5 x 4,5",
-        qtdTrilhos: 6,
-        tamTrilhos: 4.5,
-        qtdLajotas: 355,
-        subTotal: 400,
-      },
-      {
-        vao: "4,5 x 5,5",
-        qtdTrilhos: 16,
-        tamTrilhos: 5.5,
-        qtdLajotas: 655,
-        subTotal: 400, 
-      },
-    ],
+    inputs,
+    detalhes
   };
 }
 
@@ -98,14 +94,11 @@ function Row(props) {
   );
 };
 
-const rows = [
-  createData("Orçamento Laje", "R$ 10.500,00"),
-  createData("Orçamento Forro", "R$ 12.500,00"),
-  createData("Orçamento Fundação", "R$ 13.500,00"),
-];
-
 export default function CollapsibleTable({list}) {
 
+  const rows = list.map(({etapa, inputs}) => {
+    return createData(`Orçamento ${etapa}`, inputs);  
+  });
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -124,10 +117,3 @@ export default function CollapsibleTable({list}) {
     </TableContainer>
   );
 }
-
-//   `Quantidade de Trilhos:
-//   ${measurement ? calcularTrilhos(measurement.width, measurement.height).toFixed(2): "Nao pegou o valor" }
-//   \nQuantidade de Lajotas:
-//   ${measurement ? calcularLajotas(measurement.width, measurement.height).toFixed(2): "Nao pegou o valor" }`
-//   }
-// secondary={`Para o vão de: ${measurement.width}m X  ${measurement.height}m`}
