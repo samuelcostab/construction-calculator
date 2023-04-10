@@ -1,4 +1,4 @@
-import { calcularLajotas, calcularTrilhos } from "../CalculateMetrics";
+import { calcularLajotas, calcularTrilhos } from "../LajeCalculateMetrics";
 
 describe("Calculate Metrics tests", () => {
   test("should calculate lajotas correctly", () => {

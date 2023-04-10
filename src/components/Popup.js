@@ -17,10 +17,11 @@ import {
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import textResource from "../resources/popupTextResouces.json"
 
-function Popup({ onHandleCalcLageSubmit }) {
+function Popup({ onHandleCalcSubmit }) {
   const [open, setOpen] = useState(false);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
+  const [length, setLength] = useState(0);
   const [option, setOption] = useState('');
 
   const handleWidthChange = (e) => {
@@ -29,6 +30,9 @@ function Popup({ onHandleCalcLageSubmit }) {
 
   const handleHeightChange = (e) => {
     setHeight(e.target.value);
+  };
+  const handleLengthChange = (e) => {
+    setLength(e.target.value);
   };
 
   const handleClickOpen = () => {
@@ -40,9 +44,9 @@ function Popup({ onHandleCalcLageSubmit }) {
     setOption('');
   };
 
-  const handleSubmitWeightAndHeight = (e) => {
-    if (width > 0 && height > 0) {
-      onHandleCalcLageSubmit(e, { etapa: 'lage', inputs:[{width, height }]});
+  const handleSubmit = (e) => {
+    if (width > 0 || height > 0 || length > 0) {
+      onHandleCalcSubmit(e, { etapa: option, inputs:[{ width, height, length }]});
       handleClose();
     }    
   };
@@ -75,7 +79,33 @@ function Popup({ onHandleCalcLageSubmit }) {
               type="number"
               fullWidth
               variant="standard"
+              onChange={handleLengthChange}
+            />
+        </div>
+      );
+    }
+    if (selectedOption === 'Paredes') {
+      return (
+        <div>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Altura do Vão"
+              type="number"
+              fullWidth
+              variant="standard"
               onChange={handleHeightChange}
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Comprimento do Vão"
+              type="number"
+              fullWidth
+              variant="standard"
+              onChange={handleLengthChange}
             />
         </div>
       );
@@ -146,7 +176,7 @@ function Popup({ onHandleCalcLageSubmit }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>{textResource.cancelButtonTitle}</Button>
-          <Button onClick={handleSubmitWeightAndHeight}>{textResource.confirmButtonTitle}</Button>
+          <Button onClick={handleSubmit}>{textResource.confirmButtonTitle}</Button>
         </DialogActions>
       </Dialog>
     </div>

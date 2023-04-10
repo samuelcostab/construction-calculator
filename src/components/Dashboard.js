@@ -192,7 +192,7 @@ function DashboardContent() {
                   }}
                 >
                   {measurementData.length ? <SummaryList list={measurementData} title={textResources.budgetLaje} /> : null}
-                  <Popup onHandleCalcLageSubmit={handleInputSubmit}/>
+                  <Popup onHandleCalcSubmit={handleInputSubmit}/>
                 </Paper>
               </Grid>
             </Grid>
