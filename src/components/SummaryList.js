@@ -86,18 +86,11 @@ function Row(props) {
                   <TableBody>
                     {row.detalhes.map((detalhesItem, index) => (
                       <TableRow key={`${row.etapa + index}`}>
-                        <TableCell component="th" scope="row">
-                          {detalhesItem.vao}
-                        </TableCell>
+                        <TableCell component="th" scope="row">{detalhesItem.vao}</TableCell>
                         <TableCell>{detalhesItem.qtdTrilhos}</TableCell>
-                        <TableCell align="right">
-                          {detalhesItem.tamTrilhos}
-                        </TableCell>
-                        <TableCell align="right">
-                          {detalhesItem.qtdLajotas}
-                        </TableCell>
-                        <TableCell align="right">
-                          {Math.round(detalhesItem.subTotal * 100) / 100}
+                        <TableCell align="right">{detalhesItem.tamTrilhos}</TableCell>
+                        <TableCell align="right">{detalhesItem.qtdLajotas}</TableCell>
+                        <TableCell align="right">{Math.round(detalhesItem.subTotal)}
                         </TableCell>
                       </TableRow>
                     ))}
