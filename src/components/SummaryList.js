@@ -23,7 +23,7 @@ function createData(etapa, inputs) {
     return {
       vao: `${width} x ${length}`,
       qtdTrilhos: calcularTrilhos(width, length),
-      tamTrilhos: width > length ? width : length,
+      tamTrilhos: width > length ? length : width,
       qtdLajotas: calcularLajotas(width, length),
       subTotal: calcularSubTotalLaje(width, length).toFixed(2)
       }
