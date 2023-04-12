@@ -62,7 +62,6 @@ function Row(props) {
             </IconButton>
             {row.etapa}
           </TableCell>
-          <TableCell align="left">{row.total}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -74,22 +73,19 @@ function Row(props) {
                 <Table size="small" aria-label="purchases">
                   <TableHead>
                     <TableRow>
-                      <TableCell>Medidas Vão</TableCell>
+                      <TableCell align="left">Medidas Vão</TableCell>
                       <TableCell>Quantidade Trilhos</TableCell>
-                      <TableCell align="right">Tamanho Trilhos</TableCell>
+                      <TableCell align="right">Tamanho Trilhos&nbsp;(m)</TableCell>
                       <TableCell align="right">Quantidade Lajotas</TableCell>
-                      <TableCell align="right">SubTotal</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {row.detalhes.map((detalhesItem, index) => (
                       <TableRow key={`${row.etapa + index}`}>
                         <TableCell component="th" scope="row">{detalhesItem.vao}</TableCell>
-                        <TableCell>{detalhesItem.qtdTrilhos}</TableCell>
+                        <TableCell align="center">{detalhesItem.qtdTrilhos}</TableCell>
                         <TableCell align="right">{detalhesItem.tamTrilhos}</TableCell>
                         <TableCell align="right">{detalhesItem.qtdLajotas}</TableCell>
-                        <TableCell align="right">{Math.round(detalhesItem.subTotal)}
-                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -111,7 +107,6 @@ function Row(props) {
             </IconButton>
             {row.etapa}
           </TableCell>
-          <TableCell align="left">{row.total}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -127,17 +122,15 @@ function Row(props) {
                       <TableCell>Quantidade Tijolos</TableCell>
                       <TableCell align="right">Quantidade Cimento&nbsp;(saco)</TableCell>
                       <TableCell align="right">Quantidade Areia&nbsp;(m³)</TableCell>
-                      <TableCell align="right">SubTotal</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {row.detalhes.map((detalhesItem, index) => (
                       <TableRow key={`${row.etapa + index}`}>
                         <TableCell component="th" scope="row">{detalhesItem.vao}</TableCell>
-                        <TableCell align="center" >{detalhesItem.qtdTijolos}</TableCell>
+                        <TableCell align="center">{detalhesItem.qtdTijolos}</TableCell>
                         <TableCell align="right">{detalhesItem.qtdCimento}</TableCell>
                         <TableCell align="right">{detalhesItem.qtdAreia}</TableCell>
-                        <TableCell align="right">{Math.round(detalhesItem.subTotal)}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -162,7 +155,6 @@ export default function CollapsibleTable({list}) {
         <TableHead>
           <TableRow>
             <TableCell>Orçamento/Etapa</TableCell>
-            <TableCell align="left">Total&nbsp;(R$)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
