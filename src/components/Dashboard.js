@@ -99,15 +99,10 @@ function DashboardContent() {
 
   const handleInputSubmit = (e, newMeasurementData) => {
     e.preventDefault();
-    
-    measurementData.length > 0 ?
-    measurementData.forEach((stage) => {
-      if(stage.etapa === newMeasurementData.etapa){
-        stage.inputs.push(...newMeasurementData.inputs)
-        return
-      }
-      measurementData.push(newMeasurementData);
-    }) : measurementData.push(newMeasurementData);
+    const indexExistingStage = measurementData.findIndex((stage) => stage.etapa === newMeasurementData.etapa );
+    indexExistingStage !== -1 ? measurementData[indexExistingStage].inputs.push(...newMeasurementData.inputs) : measurementData.push(newMeasurementData);
+
+    console.log(measurementData, "measurements");
     setMeasurementData([...measurementData]);
   };
 
