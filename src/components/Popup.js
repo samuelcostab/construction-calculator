@@ -43,6 +43,9 @@ function Popup({ onHandleCalcSubmit }) {
   const handleClose = () => {
     setOpen(false);
     setOption('');
+    setWidth(0);
+    setHeight(0);
+    setLength(0);
   };
 
   const handleSubmit = (e) => {
