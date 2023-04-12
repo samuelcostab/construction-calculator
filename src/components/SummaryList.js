@@ -30,12 +30,11 @@ function createData(etapa, inputs) {
     });
   }
   if(etapa.includes("Paredes")){
-    console.log(inputs)
     detalhes = inputs.map(({height, width, length}) => {
       return {
         vao: `${height} x ${length}`,
         qtdTijolos: calcularTijolos(height, length),
-        qtdCimento: calcularCimento(height, length).toFixed(2),
+        qtdCimento: calcularCimento(height, length),
         qtdAreia: calcularAreia(height, length).toFixed(2),
         subTotal: calcularSubTotalLaje(width, length).toFixed(2)
         }
@@ -53,7 +52,6 @@ function createData(etapa, inputs) {
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
-  console.log(row.etapa, "aqui");
   if (row.etapa.includes("Laje")){
     return (
       <React.Fragment>
