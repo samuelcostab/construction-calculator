@@ -101,8 +101,6 @@ function DashboardContent() {
     e.preventDefault();
     const indexExistingStage = measurementData.findIndex((stage) => stage.etapa === newMeasurementData.etapa );
     indexExistingStage !== -1 ? measurementData[indexExistingStage].inputs.push(...newMeasurementData.inputs) : measurementData.push(newMeasurementData);
-
-    console.log(measurementData, "measurements");
     setMeasurementData([...measurementData]);
   };
 
