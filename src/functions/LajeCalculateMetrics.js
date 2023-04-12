@@ -1,17 +1,17 @@
 function calcularTrilhos (comprimento, largura) {
   const distLajota = 0.42;
   if (comprimento > largura) {
-    return comprimento / distLajota;
+    return Math.ceil(comprimento / distLajota);
   }
 
-  return largura / distLajota;
+  return Math.ceil(largura / distLajota);
 }
 
 
 function calcularLajotas (comprimento, largura) {
   const qtdLajotaMetroQuadrado = 12;
   const areaVao = comprimento * largura;
-  return areaVao * qtdLajotaMetroQuadrado;
+  return Math.ceil(areaVao * qtdLajotaMetroQuadrado);
 }
 
 function calcularSubTotalLaje (comprimento, largura) {

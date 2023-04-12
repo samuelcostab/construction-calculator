@@ -1,7 +1,7 @@
 function calcularTijolos (altura, comprimento) {
   const qtdTijolosMetroQuadrado = 25;
 
-  return (comprimento * altura) * qtdTijolosMetroQuadrado;
+  return Math.ceil((comprimento * altura) * qtdTijolosMetroQuadrado);
 }
 
 function calcularCimento (altura, comprimento) {

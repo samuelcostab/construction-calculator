@@ -22,9 +22,9 @@ function createData(etapa, inputs) {
     detalhes = inputs.map(({width, length}) => {
     return {
       vao: `${width} x ${length}`,
-      qtdTrilhos: calcularTrilhos(width, length).toFixed(2),
+      qtdTrilhos: calcularTrilhos(width, length),
       tamTrilhos: width > length ? width : length,
-      qtdLajotas: calcularLajotas(width, length).toFixed(2),
+      qtdLajotas: calcularLajotas(width, length),
       subTotal: calcularSubTotalLaje(width, length).toFixed(2)
       }
     });
