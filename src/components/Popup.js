@@ -31,6 +31,7 @@ function Popup({ onHandleCalcSubmit }) {
   const handleHeightChange = (e) => {
     setHeight(e.target.value);
   };
+  
   const handleLengthChange = (e) => {
     setLength(e.target.value);
   };
@@ -129,16 +130,16 @@ function Popup({ onHandleCalcSubmit }) {
         onClick={handleClickOpen}
         sx={{
           display: "flex",
+          direction: "row",
           alignItems: "center",
           justifyContent: "space-between",
           p: 3,
-          position: "fixed",
-          bottom: "10%",
-          left: "50%"
+          position: "relative",
+          left: "55%"
         }}
       >
         {textResource.mainButtonTitle}
-        <AddCircleOutlineIcon />
+        <AddCircleOutlineIcon fontSize="large"/>
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{textResource.popupHeaderTitle}</DialogTitle>
