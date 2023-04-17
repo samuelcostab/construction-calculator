@@ -1,9 +1,8 @@
-function calcularTrilhos (comprimento, largura) {
+function calcularTrilhos (largura, comprimento) {
   const distLajota = 0.42;
   if (comprimento > largura) {
     return Math.ceil(comprimento / distLajota);
   }
-
   return Math.ceil(largura / distLajota);
 }
 

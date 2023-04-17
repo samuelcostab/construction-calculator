@@ -4,9 +4,10 @@ import { calcularCimentoPiso, calcularAreiaPiso } from "../functions/ContraPisoC
 
 function processLajeDetails(inputs) {
     const detalhes = inputs.map(({ width, length }) => {
+      const qtdTrilhos = calcularTrilhos(width, length);
       return {
         vao: `${width} x ${length}`,
-        qtdTrilhos: calcularTrilhos(width, length),
+        qtdTrilhos,
         tamTrilhos: width > length ? length : width,
         qtdLajotas: calcularLajotas(width, length),
         subTotal: calcularSubTotalLaje(width, length).toFixed(2),
