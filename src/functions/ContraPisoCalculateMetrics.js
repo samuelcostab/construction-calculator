@@ -1,4 +1,4 @@
-function calcularCimento (largura, comprimento, expessura, comBrita = false) {
+function calcularCimentoPiso (largura, comprimento, expessura, comBrita = false) {
   // 1m³ gasta de 5 a 7 sacos de cimento 50kg
   // sem brita gasta 7 sacos
   // com brita gasta 5 sacos
@@ -7,7 +7,7 @@ function calcularCimento (largura, comprimento, expessura, comBrita = false) {
   return Math.ceil((comprimento * largura * expessura)) * qtdCimentoMetroCubico;
 }
 
-function calcularAreia (qtdCimento) {
+function calcularAreiaPiso (qtdCimento) {
   // 1m³ = 1000kg
   const qtdCimentoEmKg = qtdCimento * 50;
   const areiaEmKg = qtdCimentoEmKg * 3; //1:3
@@ -16,6 +16,6 @@ function calcularAreia (qtdCimento) {
 }
 
 export {
-  calcularCimento,
-  calcularAreia
+  calcularCimentoPiso,
+  calcularAreiaPiso
 }
