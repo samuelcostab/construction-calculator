@@ -20,7 +20,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "./ListItems";
-import Popup from "./Popup";
+import Popup from "./Popup/Popup";
 import SummaryList from "./SummaryList"
 import textResources from "../resources/dashBoardTextResouces.json"
 

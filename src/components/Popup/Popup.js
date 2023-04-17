@@ -15,7 +15,7 @@ import {
 
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import PopupInputs from "./PopupInputs";
-import textResource from "../resources/popupTextResouces.json"
+import textResource from "../../resources/popupTextResouces.json"
 
 function Popup({ onHandleCalcSubmit }) {
   const [open, setOpen] = useState(false);
