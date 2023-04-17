@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { 
   Button,
-  TextField,
   Dialog,
   DialogActions,
   DialogContent,
@@ -15,6 +14,7 @@ import {
 } from "@mui/material";
 
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import PopupInputs from "./PopupInputs";
 import textResource from "../resources/popupTextResouces.json"
 
 function Popup({ onHandleCalcSubmit }) {
@@ -22,6 +22,7 @@ function Popup({ onHandleCalcSubmit }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [length, setLength] = useState(0);
+  const [depth, setDepth] = useState(0);
   const [option, setOption] = useState('');
 
   const handleWidthChange = (e) => {
@@ -34,6 +35,10 @@ function Popup({ onHandleCalcSubmit }) {
   
   const handleLengthChange = (e) => {
     setLength(e.target.value);
+  };
+
+  const handleDepthChange = (e) => {
+    setDepth(e.target.value);
   };
 
   const handleClickOpen = () => {
@@ -50,7 +55,7 @@ function Popup({ onHandleCalcSubmit }) {
 
   const handleSubmit = (e) => {
     if (width > 0 || height > 0 || length > 0) {
-      onHandleCalcSubmit(e, { etapa: option, inputs:[{ width, height, length }]});
+      onHandleCalcSubmit(e, { etapa: option, inputs:[{ width, height, length, depth }]});
       handleClose();
     }    
   };
@@ -61,63 +66,33 @@ function Popup({ onHandleCalcSubmit }) {
     );
   };
 
-  const _renderInputs = (selectedOption) => {
-    if (selectedOption === 'Laje') {
-      return (
-        <div>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Largura do Vão"
-              type="number"
-              fullWidth
-              variant="standard"
-              onChange={handleWidthChange}
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Comprimento do Vão"
-              type="number"
-              fullWidth
-              variant="standard"
-              onChange={handleLengthChange}
-            />
-        </div>
-      );
+  const _renderInputs = (option) => {
+    const optionsMapper = {
+      'Laje': {
+        width: true,
+        length: true
+      },
+      'Paredes': {
+        width: true,
+        height: true
+      },
+      'Contra-Piso': {
+        width: true,
+        length: true,
+        depth: true,
+      },
     }
-    if (selectedOption === 'Paredes') {
-      return (
-        <div>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Altura do Vão"
-              type="number"
-              fullWidth
-              variant="standard"
-              onChange={handleHeightChange}
+    return <PopupInputs 
+            inputs={optionsMapper[option]}
+            handleWidthChange={handleWidthChange}
+            handleHeightChange={handleHeightChange}
+            handleLengthChange={handleLengthChange}
+            handleDepthChange={handleDepthChange}
             />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Comprimento do Vão"
-              type="number"
-              fullWidth
-              variant="standard"
-              onChange={handleLengthChange}
-            />
-        </div>
-      );
-    }
   }
-
   const _renderMenuItems = () => {
-    const items = ["Fundação", "Piso", "Paredes", "Laje", "Cobertura", "Instalações Elétricas", "Instalações Hidraulicas", "Reboco", "Forro", "Emassamento de Paredes", "Pintura"]
+    // "Fundação", "Cobertura", "Instalações Elétricas", "Instalações Hidraulicas", "Reboco", "Forro", "Emassamento de Paredes", "Pintura"
+    const items = ["Contra-Piso", "Paredes", "Laje"]
     return items.map((item, index) => {
       return (
         <MenuItem value={item} key={index}>{item}</MenuItem>
