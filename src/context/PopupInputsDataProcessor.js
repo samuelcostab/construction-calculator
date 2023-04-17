@@ -29,29 +29,29 @@ function processParedesDetails(inputs) {
 }
 
 function processContraPisoDetails(inputs) {
-    const detalhes = inputs.map(({ height, width, length }) => {
+    const detalhes = inputs.map(({ depth, width, length }) => {
+      const qtdCimento = calcularCimentoPiso(width, length, depth);
+      const qtdAreia = calcularAreiaPiso(qtdCimento).toFixed(2)
       return {
-        vao: `${height} x ${length}`,
-        qtdTijolos: calcularTijolos(height, length),
-        qtdCimento: calcularCimentoPiso(height, length),
-        qtdAreia: calcularAreiaPiso(height, length).toFixed(2),
-        subTotal: calcularSubTotalLaje(width, length).toFixed(2),
+        vao: `${width} x ${length} x ${depth}`,
+        qtdCimento,
+        qtdAreia
       };
     });
+    console.log(detalhes);
     return detalhes;
 }
 
 
-function createData(etapa, inputs) {
+function createRowData(etapa, inputs) {
   let detalhes = []
-  console.log(inputs);
   if(etapa.includes("Laje")){
     detalhes = processLajeDetails(inputs);
   }
   if(etapa.includes("Paredes")){
     detalhes = processParedesDetails(inputs);
   }
-  if(etapa.includes("Contra Piso")){
+  if(etapa.includes("Contra-Piso")){
     detalhes = processContraPisoDetails(inputs);
   }
 
@@ -65,5 +65,5 @@ function createData(etapa, inputs) {
 
 
 export {
-  createData
+  createRowData
 }

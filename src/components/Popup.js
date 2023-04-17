@@ -73,7 +73,7 @@ function Popup({ onHandleCalcSubmit }) {
         length: true
       },
       'Paredes': {
-        width: true,
+        length: true,
         height: true
       },
       'Contra-Piso': {

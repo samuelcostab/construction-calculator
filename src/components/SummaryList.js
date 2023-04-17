@@ -13,7 +13,7 @@ import { Box,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { createData } from "../context/PopupInputsDataProcessor";
+import { createRowData } from "../context/PopupInputsDataProcessor";
 
 function Row(props) {
   const { row } = props;
@@ -108,7 +108,7 @@ function Row(props) {
       </React.Fragment>
     );
   }
-  if (row.etapa.includes("Contra Piso")){
+  if (row.etapa.includes("Contra-Piso")){
     return (
       <React.Fragment>
         <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -130,7 +130,6 @@ function Row(props) {
                   <TableHead>
                     <TableRow>
                       <TableCell align="left" >Medidas Vão</TableCell>
-                      <TableCell>Quantidade Tijolos</TableCell>
                       <TableCell align="right">Quantidade Cimento&nbsp;(saco)</TableCell>
                       <TableCell align="right">Quantidade Areia&nbsp;(m³)</TableCell>
                     </TableRow>
@@ -139,7 +138,6 @@ function Row(props) {
                     {row.detalhes.map((detalhesItem, index) => (
                       <TableRow key={`${row.etapa + index}`}>
                         <TableCell component="th" scope="row">{detalhesItem.vao}</TableCell>
-                        <TableCell align="center">{detalhesItem.qtdTijolos}</TableCell>
                         <TableCell align="right">{detalhesItem.qtdCimento}</TableCell>
                         <TableCell align="right">{detalhesItem.qtdAreia}</TableCell>
                       </TableRow>
@@ -158,7 +156,7 @@ function Row(props) {
 export default function CollapsibleTable({list}) {
 
   const rows = list.map(({etapa, inputs}) => {
-    return createData(`Orçamento ${etapa}`, inputs);  
+    return createRowData(`Orçamento ${etapa}`, inputs);  
   });
   return (
     <TableContainer component={Paper}>
