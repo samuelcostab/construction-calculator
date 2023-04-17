@@ -13,7 +13,7 @@ import { Box,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { createRowData } from "../context/PopupInputsDataProcessor";
+import { createRowData } from "../../context/PopupInputsDataProcessor";
 
 function Row(props) {
   const { row } = props;

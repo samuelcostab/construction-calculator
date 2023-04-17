@@ -21,7 +21,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "./ListItems";
 import Popup from "./Popup/Popup";
-import SummaryList from "./SummaryList"
+import SummaryList from "./SummaryList/SummaryList"
 import textResources from "../resources/dashBoardTextResouces.json"
 
 function Copyright(props) {
