@@ -38,7 +38,8 @@ function Popup({ onHandleCalcSubmit }) {
   };
 
   const handleDepthChange = (e) => {
-    setDepth(Number(e.target.value));
+    //divide a entrada por cem. Ex: 5 / 100 = 0,05 de expessura
+    setDepth(Number(e.target.value)/100);
   };
 
   const handleClickOpen = () => {

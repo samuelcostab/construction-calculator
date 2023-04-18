@@ -12,7 +12,7 @@ function PopupInputs({ inputs, handleWidthChange, handleHeightChange, handleLeng
               autoFocus
               margin="dense"
               id="name"
-              label="Largura do Vão"
+              label="Largura (m)"
               type="number"
               fullWidth
               variant="standard"
@@ -24,7 +24,7 @@ function PopupInputs({ inputs, handleWidthChange, handleHeightChange, handleLeng
               autoFocus
               margin="dense"
               id="name"
-              label="Altura do Vão"
+              label="Altura (m)"
               type="number"
               fullWidth
               variant="standard"
@@ -36,7 +36,7 @@ function PopupInputs({ inputs, handleWidthChange, handleHeightChange, handleLeng
               autoFocus
               margin="dense"
               id="name"
-              label="Comprimento do Vão"
+              label="Comprimento (m)"
               type="number"
               fullWidth
               variant="standard"
@@ -48,7 +48,7 @@ function PopupInputs({ inputs, handleWidthChange, handleHeightChange, handleLeng
               autoFocus
               margin="dense"
               id="name"
-              label="Expessura desejada"
+              label="Expessura (cm)"
               type="number"
               fullWidth
               variant="standard"
