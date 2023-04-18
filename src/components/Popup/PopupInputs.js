@@ -48,7 +48,7 @@ function PopupInputs({ inputs, handleWidthChange, handleHeightChange, handleLeng
               autoFocus
               margin="dense"
               id="name"
-              label="Expessura (cm)"
+              label="Espessura (cm)"
               type="number"
               fullWidth
               variant="standard"
