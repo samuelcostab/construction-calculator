@@ -104,20 +104,23 @@ function Popup({ onHandleCalcSubmit }) {
   return (
     <div>
       <Button
-        variant="outfiled"
+        xs={12}
+        variant="contained"
         onClick={handleClickOpen}
+        startIcon={<AddCircleOutlineIcon fontSize="large"/>}
+        color="primary"
         sx={{
+          borderRadius: '30px',
           display: "flex",
           direction: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          p: 3,
+          p: 2,
+          m: 2,
           position: "relative",
-          left: "55%"
         }}
       >
-        {textResource.mainButtonTitle}
-        <AddCircleOutlineIcon fontSize="large"/>
+        {textResource.mainButtonTitle}  
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{textResource.popupHeaderTitle}</DialogTitle>
