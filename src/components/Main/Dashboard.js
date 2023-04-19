@@ -12,35 +12,17 @@ import {
   Container,
   Grid,
   Paper,
-  Link
   } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import SideBarListItems from "./ListItems";
-import Popup from "./Popup/Popup";
-import SummaryList from "./SummaryList/SummaryList"
-import textResources from "../resources/dashBoardTextResouces.json"
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import SideBarListItems from "../ListItems";
+import Popup from "../Popup/Popup";
+import SummaryList from "../SummaryList/SummaryList"
+import textResources from "../../resources/dashBoardTextResouces.json"
+import Copyright from "./Copyright";
 
 const drawerWidth = 240;
 
