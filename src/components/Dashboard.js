@@ -19,7 +19,7 @@ import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { mainListItems, secondaryListItems } from "./ListItems";
+import SideBarListItems from "./ListItems";
 import Popup from "./Popup/Popup";
 import SummaryList from "./SummaryList/SummaryList"
 import textResources from "../resources/dashBoardTextResouces.json"
@@ -93,9 +93,15 @@ const mdTheme = createTheme();
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
   const [measurementData, setMeasurementData] = useState([]);
+  const [sidebarOption, setSideBarOption] = useState('Dashboard');
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  const handleSelectOption = (e) => {
+    setSideBarOption(e.target.outerText)
+
+  }
 
   const handleInputSubmit = (e, newMeasurementData) => {
     e.preventDefault();
@@ -154,9 +160,8 @@ function DashboardContent() {
           </Toolbar>
           <Divider />
           <List key="menu-list" component="nav">
-            {mainListItems()}
+            <SideBarListItems handleSelectOption={handleSelectOption}/>
             <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
           </List>
         </Drawer>
         <Box
@@ -185,7 +190,8 @@ function DashboardContent() {
                   }}
                 >
                   {measurementData.length ? <SummaryList list={measurementData} title={textResources.budgetLaje} /> : null}
-                  <Popup onHandleCalcSubmit={handleInputSubmit}/>
+                  {sidebarOption === 'Orçamento' ? <Popup onHandleCalcSubmit={handleInputSubmit}/> : null}
+                  {sidebarOption === 'Configurações' ? <h3 onHandleCalcSubmit={handleInputSubmit}>furmulario de settings </h3> : null}
                 </Paper>
               </Grid>
             </Grid>

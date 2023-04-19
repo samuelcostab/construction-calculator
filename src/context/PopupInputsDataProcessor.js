@@ -39,7 +39,6 @@ function processContraPisoDetails(inputs) {
         qtdAreia
       };
     });
-    console.log(detalhes);
     return detalhes;
 }
 

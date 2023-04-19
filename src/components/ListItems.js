@@ -4,6 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 //import ListSubheader from '@mui/material/ListSubheader';
 import LabelImportantIcon from '@mui/icons-material/LabelImportant';
+import SettingsIcon from '@mui/icons-material/Settings';
 //import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 //import PeopleIcon from '@mui/icons-material/People';
 //import BarChartIcon from '@mui/icons-material/BarChart';
@@ -11,46 +12,22 @@ import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 //import AssignmentIcon from '@mui/icons-material/Assignment';
 
 
-export const mainListItems = () => {
-  const items = [{ name: "Home" }, { name: "Dashboard" }];
-  return items.map((item, index) => {
-    return (
-        <React.Fragment key={index}>
-          <ListItemButton>
-            <ListItemIcon>
-              <LabelImportantIcon />
-            </ListItemIcon>
-            <ListItemText primary={item.name} />
-          </ListItemButton>
-        </React.Fragment>
-    );
-    
-  });
-}
+export default function sideBarListItems({handleSelectOption}) {
+  const items = [
+    { name: "Orçamento", icon: function (){ return <LabelImportantIcon /> } }, 
+    { name: "Configurações", icon: function (){ return <SettingsIcon /> }}
+  ];
 
-export const secondaryListItems = [] //(
-  /* <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItemButton>
-  </React.Fragment>
-  */
-//);
+  return (
+    items.map((item, index) =>
+      <React.Fragment key={index}>
+            <ListItemButton onClick={handleSelectOption}>
+              <ListItemIcon>
+               {item.icon()}
+              </ListItemIcon>
+              <ListItemText primary={item.name} />
+            </ListItemButton>
+          </React.Fragment>
+    )
+  );
+}
