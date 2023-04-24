@@ -21,11 +21,11 @@ export default function sideBarListItems({handleSelectOption}) {
   return (
     items.map((item, index) =>
       <React.Fragment key={index}>
-            <ListItemButton onClick={handleSelectOption}>
+            <ListItemButton key={item.name}>
               <ListItemIcon>
                {item.icon()}
               </ListItemIcon>
-              <ListItemText primary={item.name} />
+              <ListItemText primary={item.name} onClick={handleSelectOption}/>
             </ListItemButton>
           </React.Fragment>
     )
