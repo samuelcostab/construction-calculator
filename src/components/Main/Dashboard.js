@@ -149,7 +149,7 @@ function DashboardContent() {
           </Toolbar>
           <Divider />
           <List key="menu-list" component="nav">
-            <SideBarListItems handleSelectOption={handleSelectOption}/>
+            <SideBarListItems handleSelectOption={handleSelectOption} />
             <Divider sx={{ my: 1 }} />
           </List>
         </Drawer>
@@ -178,9 +178,13 @@ function DashboardContent() {
                     height: 580,
                   }}
                 >
-                  {measurementData.length ? <SummaryList list={measurementData} title={textResources.budgetLaje} /> : null}
-                  {sidebarOption === 'Orçamento' ? <Popup onHandleCalcSubmit={handleInputSubmit}/> : null}
-                  {sidebarOption === 'Configurações' ? <SettingsForm setSettings={setSettings}/> : null}
+                  {sidebarOption === "Orçamento" ? (
+                    <>
+                      {measurementData.length ? (<SummaryList list={measurementData}  title={textResources.budgetLaje} />) : null}
+                      <Popup onHandleCalcSubmit={handleInputSubmit} />
+                    </>
+                  ) : null}
+                  {sidebarOption === "Configurações" ? (<SettingsForm setSettings={setSettings} />) : null}
                 </Paper>
               </Grid>
             </Grid>
