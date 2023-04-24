@@ -23,6 +23,7 @@ import Popup from "../Popup/Popup";
 import SummaryList from "../SummaryList/SummaryList"
 import textResources from "../../resources/dashBoardTextResouces.json"
 import Copyright from "./Copyright";
+import SettingsForm from "../Settings/SettingsForm";
 
 const drawerWidth = 240;
 
@@ -73,9 +74,11 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme();
 
 function DashboardContent() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const [measurementData, setMeasurementData] = useState([]);
-  const [sidebarOption, setSideBarOption] = useState('Dashboard');
+  const [sidebarOption, setSideBarOption] = useState('Orçamento');
+  const [settings, setSettings] = useState({});
+  
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -83,13 +86,17 @@ function DashboardContent() {
   const handleSelectOption = (e) => {
     setSideBarOption(e.target.outerText)
 
-  }
+  };
 
   const handleInputSubmit = (e, newMeasurementData) => {
     e.preventDefault();
     const indexExistingStage = measurementData.findIndex((stage) => stage.etapa === newMeasurementData.etapa );
     indexExistingStage !== -1 ? measurementData[indexExistingStage].inputs.push(...newMeasurementData.inputs) : measurementData.push(newMeasurementData);
     setMeasurementData([...measurementData]);
+  };
+
+  const getSettingsValues = () => {
+    return settings;
   };
 
   return (
@@ -173,7 +180,7 @@ function DashboardContent() {
                 >
                   {measurementData.length ? <SummaryList list={measurementData} title={textResources.budgetLaje} /> : null}
                   {sidebarOption === 'Orçamento' ? <Popup onHandleCalcSubmit={handleInputSubmit}/> : null}
-                  {sidebarOption === 'Configurações' ? <h3 onHandleCalcSubmit={handleInputSubmit}>furmulario de settings </h3> : null}
+                  {sidebarOption === 'Configurações' ? <SettingsForm setSettings={setSettings}/> : null}
                 </Paper>
               </Grid>
             </Grid>
