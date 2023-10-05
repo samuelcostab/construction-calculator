@@ -10,24 +10,29 @@ import SettingsIcon from '@mui/icons-material/Settings';
 //import BarChartIcon from '@mui/icons-material/BarChart';
 //import LayersIcon from '@mui/icons-material/Layers';
 //import AssignmentIcon from '@mui/icons-material/Assignment';
+import { Link } from 'react-router-dom';
+import styles from './index.module.css';
 
 
-export default function sideBarListItems({handleSelectOption}) {
+export default function sideBarListItems() {
   const items = [
-    { name: "Orçamento", icon: function (){ return <LabelImportantIcon /> } }, 
-    { name: "Configurações", icon: function (){ return <SettingsIcon /> }}
+    { name: "Home", to:"/", icon: function (){ return <LabelImportantIcon /> } },
+    { name: "Orçamento", to:"orcamento", icon: function (){ return <LabelImportantIcon /> } }, 
+    { name: "Configurações", to:"/", icon: function (){ return <SettingsIcon /> }}
   ];
 
   return (
     items.map((item, index) =>
       <React.Fragment key={index}>
-            <ListItemButton key={item.name}>
-              <ListItemIcon>
-               {item.icon()}
+        <Link to={item.to} className={styles.link}>
+          <ListItemButton key={item.name}>
+            <ListItemIcon>
+              {item.icon()}
               </ListItemIcon>
-              <ListItemText primary={item.name} onClick={handleSelectOption}/>
-            </ListItemButton>
-          </React.Fragment>
+            <ListItemText primary={item.name}/>
+          </ListItemButton>
+        </Link>
+      </React.Fragment>
     )
   );
 }
