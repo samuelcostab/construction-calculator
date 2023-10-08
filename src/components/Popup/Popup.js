@@ -119,6 +119,11 @@ function Popup({ onHandleCalcSubmit }) {
           p: 2,
           m: 2,
           position: "relative",
+          background:"#545454",
+          '&:hover': {
+            backgroundColor: '#dedede',
+            color: '#545454',
+          },
         }}
       >
         {textResource.mainButtonTitle}  
