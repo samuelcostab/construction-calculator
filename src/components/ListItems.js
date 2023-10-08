@@ -2,22 +2,17 @@ import * as React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-//import ListSubheader from '@mui/material/ListSubheader';
-import LabelImportantIcon from '@mui/icons-material/LabelImportant';
+import HomeIcon from '@mui/icons-material/Home';
 import SettingsIcon from '@mui/icons-material/Settings';
-//import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-//import PeopleIcon from '@mui/icons-material/People';
-//import BarChartIcon from '@mui/icons-material/BarChart';
-//import LayersIcon from '@mui/icons-material/Layers';
-//import AssignmentIcon from '@mui/icons-material/Assignment';
+import SummarizeIcon from '@mui/icons-material/Summarize';
 import { Link } from 'react-router-dom';
 import styles from './index.module.css';
 
 
 export default function sideBarListItems() {
   const items = [
-    { name: "Home", to:"/", icon: function (){ return <LabelImportantIcon /> } },
-    { name: "Orçamento", to:"orcamento", icon: function (){ return <LabelImportantIcon /> } }, 
+    { name: "Home", to:"/", icon: function (){ return <HomeIcon /> } },
+    { name: "Orçamento", to:"orcamento", icon: function (){ return <SummarizeIcon /> } }, 
     { name: "Configurações", to:"/", icon: function (){ return <SettingsIcon /> }}
   ];
 
