@@ -9,10 +9,10 @@ function calcularCimento (altura, comprimento) {
   // qtdTraços = qtdTijolos (total) / qtdTijolosTraço
   // 1 Traço = 1 Saco de Cimento
   // qtdSacosCimento = qtdTraços 
-  const tijolosTraco = 100;
+  const tijolosTraco = 125;
   const qtdTotalTijolos = calcularTijolos(altura, comprimento);
 
-  return Math.ceil(qtdTotalTijolos / tijolosTraco);
+  return qtdTotalTijolos / tijolosTraco;
 }
 
 function calcularAreia (altura, comprimento) {
