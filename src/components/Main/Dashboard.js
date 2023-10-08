@@ -86,7 +86,7 @@ function DashboardContent() {
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
-          <Toolbar sx={{ pr: "24px" }}>
+          <Toolbar sx={{ pr: "24px", backgroundColor: "#545454" }}>
             <IconButton
               data-testid="sidebar-button"
               edge="start"

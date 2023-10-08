@@ -3,7 +3,7 @@ import React from "react";
 const Home = () => {
     return (
         <div>
-            <h1>Colocar texto falando do sistema</h1>
+            <h1>Colocar elementos da HOME</h1>
         </div>
     )
 };
