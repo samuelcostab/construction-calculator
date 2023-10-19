@@ -82,6 +82,11 @@ function Popup({ onHandleCalcSubmit }) {
         length: true,
         depth: true,
       },
+      'Reboco': {
+        height: true,
+        length: true,
+        depth: true,
+      },
     }
     return <PopupInputs 
             inputs={optionsMapper[option]}
@@ -93,12 +98,11 @@ function Popup({ onHandleCalcSubmit }) {
   }
   const _renderMenuItems = () => {
     // "Fundação", "Cobertura", "Instalações Elétricas", "Instalações Hidraulicas", "Reboco", "Forro", "Emassamento de Paredes", "Pintura"
-    const items = ["Contra-Piso", "Paredes", "Laje"]
+    const items = ["Contra-Piso", "Paredes", "Laje", "Reboco"]
     return items.map((item, index) => {
       return (
         <MenuItem value={item} key={index}>{item}</MenuItem>
       );
-      
     }); 
   }
 

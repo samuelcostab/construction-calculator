@@ -1,6 +1,11 @@
 import { calcularTrilhos, calcularLajotas, calcularSubTotalLaje } from "../functions/LajeCalculateMetrics";
 import { calcularTijolos, calcularCimento, calcularAreia } from "../functions/ParedesCalculateMetrics";
 import { calcularCimentoPiso, calcularAreiaPiso } from "../functions/ContraPisoCalculateMetrics";
+import { calcularCimentoReboco, calcularAreiaReboco } from "../functions/RebocoCalculateMetrics";
+
+const formatCimentoValue = (qtdCimento) => {
+  return qtdCimento > 0.9 ? `${Math.ceil(qtdCimento).toFixed(2)} un` : `${qtdCimento.toFixed(2)*50} kg`
+}
 
 function processLajeDetails(inputs) {
     const detalhes = inputs.map(({ width, length }) => {
@@ -21,7 +26,7 @@ function processParedesDetails(inputs) {
       return {
         vao: `${height} x ${length}`,
         qtdTijolos: calcularTijolos(height, length),
-        qtdCimento: calcularCimento(height, length),
+        qtdCimento: formatCimentoValue(calcularCimento(height, length)),
         qtdAreia: calcularAreia(height, length).toFixed(2),
         subTotal: calcularSubTotalLaje(width, length).toFixed(2),
       };
@@ -31,10 +36,23 @@ function processParedesDetails(inputs) {
 
 function processContraPisoDetails(inputs) {
     const detalhes = inputs.map(({ depth, width, length }) => {
-      const qtdCimento = calcularCimentoPiso(width, length, depth);
+      const qtdCimento = formatCimentoValue(calcularCimentoPiso(width, length, depth));
       const qtdAreia = calcularAreiaPiso(qtdCimento).toFixed(2)
       return {
         vao: `${width} x ${length} x ${depth}`,
+        qtdCimento,
+        qtdAreia
+      };
+    });
+    return detalhes;
+}
+
+function processRebocoDetails(inputs) {
+    const detalhes = inputs.map(({ depth, height, length }) => {
+      const qtdCimento = formatCimentoValue(calcularCimentoReboco(height, length, depth));
+      const qtdAreia = calcularAreiaReboco(height, length, depth).toFixed(2)
+      return {
+        vao: `${height} x ${length} x ${depth}`,
         qtdCimento,
         qtdAreia
       };
@@ -53,6 +71,10 @@ function createRowData(etapa, inputs) {
   }
   if(etapa.includes("Contra-Piso")){
     detalhes = processContraPisoDetails(inputs);
+  }
+  
+  if(etapa.includes("Reboco")){
+    detalhes = processRebocoDetails(inputs);
   }
 
   return {
