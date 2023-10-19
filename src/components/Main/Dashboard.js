@@ -24,6 +24,7 @@ import SummaryList from "../SummaryList/SummaryList"
 import textResources from "../../resources/dashBoardTextResouces.json"
 import Copyright from "./Copyright";
 import SettingsForm from "../Settings/SettingsForm";
+import { Outlet } from 'react-router-dom'
 
 const drawerWidth = 240;
 
@@ -75,28 +76,9 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(false);
-  const [measurementData, setMeasurementData] = useState([]);
-  const [sidebarOption, setSideBarOption] = useState('Orçamento');
-  const [settings, setSettings] = useState({});
   
   const toggleDrawer = () => {
     setOpen(!open);
-  };
-
-  const handleSelectOption = (e) => {
-    setSideBarOption(e.target.outerText)
-
-  };
-
-  const handleInputSubmit = (e, newMeasurementData) => {
-    e.preventDefault();
-    const indexExistingStage = measurementData.findIndex((stage) => stage.etapa === newMeasurementData.etapa );
-    indexExistingStage !== -1 ? measurementData[indexExistingStage].inputs.push(...newMeasurementData.inputs) : measurementData.push(newMeasurementData);
-    setMeasurementData([...measurementData]);
-  };
-
-  const getSettingsValues = () => {
-    return settings;
   };
 
   return (
@@ -104,7 +86,7 @@ function DashboardContent() {
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
-          <Toolbar sx={{ pr: "24px" }}>
+          <Toolbar sx={{ pr: "24px", backgroundColor: "#545454" }}>
             <IconButton
               data-testid="sidebar-button"
               edge="start"
@@ -149,7 +131,7 @@ function DashboardContent() {
           </Toolbar>
           <Divider />
           <List key="menu-list" component="nav">
-            <SideBarListItems handleSelectOption={handleSelectOption} />
+            <SideBarListItems />
             <Divider sx={{ my: 1 }} />
           </List>
         </Drawer>
@@ -169,22 +151,8 @@ function DashboardContent() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={12}>
               <Grid item xs={12} md={12} lg={12}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: 580,
-                  }}
-                >
-                  {sidebarOption === "Orçamento" ? (
-                    <>
-                      {measurementData.length ? (<SummaryList list={measurementData}  title={textResources.budgetLaje} />) : null}
-                      <Popup onHandleCalcSubmit={handleInputSubmit} />
-                    </>
-                  ) : null}
-                  {sidebarOption === "Configurações" ? (<SettingsForm setSettings={setSettings} />) : null}
+                <Paper>
+                  <Outlet />
                 </Paper>
               </Grid>
             </Grid>
