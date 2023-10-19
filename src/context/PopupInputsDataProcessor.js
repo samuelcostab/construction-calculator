@@ -36,11 +36,11 @@ function processParedesDetails(inputs) {
 
 function processContraPisoDetails(inputs) {
     const detalhes = inputs.map(({ depth, width, length }) => {
-      const qtdCimento = formatCimentoValue(calcularCimentoPiso(width, length, depth));
+      const qtdCimento = calcularCimentoPiso(width, length, depth);
       const qtdAreia = calcularAreiaPiso(qtdCimento).toFixed(2)
       return {
         vao: `${width} x ${length} x ${depth}`,
-        qtdCimento,
+        qtdCimento: formatCimentoValue(qtdCimento),
         qtdAreia
       };
     });
@@ -49,12 +49,10 @@ function processContraPisoDetails(inputs) {
 
 function processRebocoDetails(inputs) {
     const detalhes = inputs.map(({ depth, height, length }) => {
-      const qtdCimento = formatCimentoValue(calcularCimentoReboco(height, length, depth));
-      const qtdAreia = calcularAreiaReboco(height, length, depth).toFixed(2)
       return {
         vao: `${height} x ${length} x ${depth}`,
-        qtdCimento,
-        qtdAreia
+        qtdCimento: formatCimentoValue(calcularCimentoReboco(height, length, depth)),
+        qtdAreia: calcularAreiaReboco(height, length, depth).toFixed(2)
       };
     });
     return detalhes;
