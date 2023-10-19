@@ -9,7 +9,6 @@ function calcularCimentoPiso (largura, comprimento, expessura, comBrita = false)
 
 function calcularAreiaPiso (qtdCimento) {
   // 1m³ = 1000kg
-  debugger
   const qtdCimentoEmKg = qtdCimento * 50;
   const areiaEmKg = qtdCimentoEmKg * 3; //1:3
 
