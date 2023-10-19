@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import { 
   CssBaseline,
@@ -19,11 +19,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SideBarListItems from "../ListItems";
-import Popup from "../Popup/Popup";
-import SummaryList from "../SummaryList/SummaryList"
 import textResources from "../../resources/dashBoardTextResouces.json"
 import Copyright from "./Copyright";
-import SettingsForm from "../Settings/SettingsForm";
 import { Outlet } from 'react-router-dom'
 
 const drawerWidth = 240;
