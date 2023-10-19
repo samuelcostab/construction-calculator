@@ -15,10 +15,6 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 export default function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
-
-  const formatCimentoValue = (qtdCimento) => {
-    return qtdCimento > 0.9 ? `${Math.ceil(qtdCimento)} un` : `${qtdCimento*50} kg`
-  }
   
   if (row.etapa.includes("Laje")){
     return (
@@ -97,7 +93,7 @@ export default function Row(props) {
                       <TableRow key={`${row.etapa + index}`}>
                         <TableCell component="th" scope="row">{detalhesItem.vao}</TableCell>
                         <TableCell align="center">{detalhesItem.qtdTijolos}</TableCell>
-                        <TableCell align="right">{formatCimentoValue(detalhesItem.qtdCimento)}</TableCell>
+                        <TableCell align="right">{detalhesItem.qtdCimento}</TableCell>
                         <TableCell align="right">{detalhesItem.qtdAreia}</TableCell>
                       </TableRow>
                     ))}
@@ -110,7 +106,7 @@ export default function Row(props) {
       </React.Fragment>
     );
   }
-  if (row.etapa.includes("Contra-Piso")){
+  if (row.etapa.includes("Contra-Piso") || row.etapa.includes("Reboco")){
     return (
       <React.Fragment>
         <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -140,7 +136,7 @@ export default function Row(props) {
                     {row.detalhes.map((detalhesItem, index) => (
                       <TableRow key={`${row.etapa + index}`}>
                         <TableCell component="th" scope="row">{detalhesItem.vao}</TableCell>
-                        <TableCell align="right">{formatCimentoValue(detalhesItem.qtdCimento)}</TableCell>
+                        <TableCell align="right">{detalhesItem.qtdCimento}</TableCell>
                         <TableCell align="right">{detalhesItem.qtdAreia}</TableCell>
                       </TableRow>
                     ))}
