@@ -19,7 +19,7 @@ export default function sideBarListItems() {
   return (
     items.map((item, index) =>
       <React.Fragment key={index}>
-        <Link to={item.to} className={styles.link}>
+        <Link to={item.to} className={styles.link} style={{ textDecoration: 'none', color: 'black' }}>
           <ListItemButton key={item.name}>
             <ListItemIcon>
               {item.icon()}
