@@ -65,7 +65,7 @@ function Popup({ onHandleCalcSubmit }) {
       onHandleCalcSubmit(e, { etapa: option, inputs:[{ name, width, height, length, depth }]});
       handleClose();
     } else {
-      alert("Algun(s) campo(s) não foi preenchido coretamente!");
+      alert("Algum(s) campo(s) não foi preenchido coretamente!");
     }
   };
 
