@@ -1,12 +1,22 @@
 import React from "react";
 import { TextField } from "@mui/material";
 
-function PopupInputs({ inputs, handleWidthChange, handleHeightChange, handleLengthChange, handleDepthChange }) {
+function PopupInputs({ inputs, handleNameChange ,handleWidthChange, handleHeightChange, handleLengthChange, handleDepthChange }) {
 
   return (
     <div>
       {inputs ? (
         <div>
+           <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Nome do vão"
+              type="string"
+              fullWidth
+              variant="standard"
+              onChange={handleNameChange}
+            />
           {inputs.width && (
             <TextField
               autoFocus
