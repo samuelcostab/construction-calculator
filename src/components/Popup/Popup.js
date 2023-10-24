@@ -19,11 +19,16 @@ import textResource from "../../resources/popupTextResouces.json"
 
 function Popup({ onHandleCalcSubmit }) {
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState('');
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [length, setLength] = useState(0);
   const [depth, setDepth] = useState(0);
   const [option, setOption] = useState('');
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
 
   const handleWidthChange = (e) => {
     setWidth(Number(e.target.value));
@@ -48,6 +53,7 @@ function Popup({ onHandleCalcSubmit }) {
 
   const handleClose = () => {
     setOpen(false);
+    setName('');
     setOption('');
     setWidth(0);
     setHeight(0);
@@ -56,9 +62,11 @@ function Popup({ onHandleCalcSubmit }) {
 
   const handleSubmit = (e) => {
     if (width > 0 || height > 0 || length > 0) {
-      onHandleCalcSubmit(e, { etapa: option, inputs:[{ width, height, length, depth }]});
+      onHandleCalcSubmit(e, { etapa: option, inputs:[{ name, width, height, length, depth }]});
       handleClose();
-    }    
+    } else {
+      alert("Algum(s) campo(s) não foi preenchido coretamente!");
+    }
   };
 
   const handleOptionsSelectChange = (event) => {
@@ -90,6 +98,7 @@ function Popup({ onHandleCalcSubmit }) {
     }
     return <PopupInputs 
             inputs={optionsMapper[option]}
+            handleNameChange={handleNameChange}
             handleWidthChange={handleWidthChange}
             handleHeightChange={handleHeightChange}
             handleLengthChange={handleLengthChange}
