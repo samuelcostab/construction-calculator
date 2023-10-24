@@ -4,7 +4,7 @@ function calcularCimentoPiso (largura, comprimento, expessura, comBrita = false)
   // com brita gasta 5 sacos
   const qtdCimentoMetroCubico = comBrita ? 5 : 7;
 
-  return Math.ceil((comprimento * largura * expessura)) * qtdCimentoMetroCubico;
+  return (comprimento * largura * expessura) * qtdCimentoMetroCubico;
 }
 
 function calcularAreiaPiso (qtdCimento) {

@@ -84,7 +84,7 @@ export default function Row(props) {
                     <TableRow>
                       <TableCell align="left" >Medidas Vão</TableCell>
                       <TableCell>Quantidade Tijolos</TableCell>
-                      <TableCell align="right">Quantidade Cimento&nbsp;(saco)</TableCell>
+                      <TableCell align="right">Quantidade Cimento&nbsp;(saco/kg)</TableCell>
                       <TableCell align="right">Quantidade Areia&nbsp;(m³)</TableCell>
                     </TableRow>
                   </TableHead>
@@ -106,7 +106,7 @@ export default function Row(props) {
       </React.Fragment>
     );
   }
-  if (row.etapa.includes("Contra-Piso")){
+  if (row.etapa.includes("Contra-Piso") || row.etapa.includes("Reboco")){
     return (
       <React.Fragment>
         <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
