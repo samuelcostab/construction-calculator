@@ -1,36 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
 
 // - Configurando router
 
 import {
-  createBrowserRouter,
-  RouterProvider
+  RouterProvider,
 } from 'react-router-dom';
-import ErrorPage from './views/ErroPage';
-import Home from './views/home/Home';
-import OrcamentoView from './views/orcamento/OrcamentoView';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: '/',
-        element: <Home />
-      },
-      {
-        path: '/orcamento',
-        element: <OrcamentoView />
-      },
-    ]
-  }
-]);
+import router from './routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

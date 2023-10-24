@@ -1,6 +1,11 @@
 import { calcularTrilhos, calcularLajotas, calcularSubTotalLaje } from "../functions/LajeCalculateMetrics";
 import { calcularTijolos, calcularCimento, calcularAreia } from "../functions/ParedesCalculateMetrics";
 import { calcularCimentoPiso, calcularAreiaPiso } from "../functions/ContraPisoCalculateMetrics";
+import { calcularCimentoReboco, calcularAreiaReboco } from "../functions/RebocoCalculateMetrics";
+
+const formatCimentoValue = (qtdCimento) => {
+  return qtdCimento > 0.9 ? `${Math.ceil(qtdCimento).toFixed(2)} un` : `${qtdCimento.toFixed(2)*50} kg`
+}
 
 function processLajeDetails(inputs) {
     const detalhes = inputs.map(({ name, width, length }) => {
@@ -21,7 +26,7 @@ function processParedesDetails(inputs) {
       return {
         vao: `${name} (${height} x ${length})`,
         qtdTijolos: calcularTijolos(height, length),
-        qtdCimento: calcularCimento(height, length),
+        qtdCimento: formatCimentoValue(calcularCimento(height, length)),
         qtdAreia: calcularAreia(height, length).toFixed(2),
         subTotal: calcularSubTotalLaje(width, length).toFixed(2),
       };
@@ -42,6 +47,17 @@ function processContraPisoDetails(inputs) {
     return detalhes;
 }
 
+function processRebocoDetails(inputs) {
+    const detalhes = inputs.map(({ depth, height, length }) => {
+      return {
+        vao: `${height} x ${length} x ${depth}`,
+        qtdCimento: formatCimentoValue(calcularCimentoReboco(height, length, depth)),
+        qtdAreia: calcularAreiaReboco(height, length, depth).toFixed(2)
+      };
+    });
+    return detalhes;
+}
+
 
 function createRowData(etapa, inputs) {
   let detalhes = []
@@ -53,6 +69,10 @@ function createRowData(etapa, inputs) {
   }
   if(etapa.includes("Contra-Piso")){
     detalhes = processContraPisoDetails(inputs);
+  }
+  
+  if(etapa.includes("Reboco")){
+    detalhes = processRebocoDetails(inputs);
   }
 
   return {
